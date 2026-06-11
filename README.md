@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Swag Labs
 
-## Getting Started
+A faithful clone of [saucedemo.com](https://www.saucedemo.com/) — Sauce Labs'
+"Swag Labs" demo store — built with **Next.js 16 (App Router) · React 19 ·
+Tailwind CSS v4**.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev          # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Accepted logins
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Password for **all** users: `secret_sauce`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Username                  | Behavior                                                                                                            |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `standard_user`           | Normal experience                                                                                                 |
+| `locked_out_user`         | Login blocked with a lock-out error                                                                               |
+| `problem_user`            | All images are the dog (`sl-404`); item links are off-by-one; sort dead; some add/remove fail; doubled checkout total; Last Name fills First Name; Finish doesn't clear the cart |
+| `performance_glitch_user` | Pages load with artificial latency                                                                               |
+| `error_user`              | Add/remove throw by id parity; sorting, the Last Name field and Finish all throw                                  |
+| `visual_user`             | Randomized (wrong) prices, the first image is broken, and the cart icon is misaligned                            |
 
-## Learn More
+A bad item id (including the off-by-one links) shows the **ITEM NOT FOUND** page.
 
-To learn more about Next.js, take a look at the following resources:
+## Flow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`/` (login) → `/inventory` → `/inventory/[id]` → `/cart` →
+`/checkout-step-one` → `/checkout-step-two` → `/checkout-complete`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- The cart lives in `localStorage` (`cart-contents`). **Reset App State** and
+  **Logout** in the hamburger menu clear it.
+- Store routes are gated by a login cookie in [`src/proxy.ts`](src/proxy.ts);
+  visiting them logged-out bounces to the login page.
+- Inventory, prices, descriptions, copy, sorting, the 8% tax and the product
+  photos in [`public/images/`](public/images/) all mirror the real site.
 
-## Deploy on Vercel
+## Project layout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+  app/
+    page.tsx            login page
+    (shop)/             authenticated store: layout (header + footer),
+                        inventory, inventory/[id], cart, checkout-step-one/two,
+                        checkout-complete
+    not-found.tsx       sl-404 page
+  components/           header (menu + cart badge), footer, cart-provider,
+                        product-card, product-detail, cart-button
+  lib/
+    swag.ts             inventory, users, login rules, sorting, formatting
+    session.ts          cookie/session + performance-glitch delay
+  proxy.ts              login gate (Next.js 16 proxy)
+```
