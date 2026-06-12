@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { asset } from "@/lib/swag";
 
 export function ItemNotFound() {
   return (
@@ -10,7 +11,7 @@ export function ItemNotFound() {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/sl-404.jpg"
+          src={asset("/images/sl-404.jpg")}
           alt="Item not found"
           className="w-full rounded border border-line object-contain"
         />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { type Product, money } from "@/lib/swag";
+import { type Product, money, asset } from "@/lib/swag";
 import { CartButton } from "@/components/cart-button";
 
 export function ProductDetail({ product }: { product: Product }) {
@@ -21,7 +21,7 @@ export function ProductDetail({ product }: { product: Product }) {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={product.image}
+          src={asset(product.image)}
           alt={product.name}
           className="w-full rounded border border-line object-contain"
           data-test="item-image"

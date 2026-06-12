@@ -1,16 +1,16 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { UserProvider } from "@/components/user-provider";
-import { currentUser } from "@/lib/session";
+import { RouteGuard } from "@/components/route-guard";
 
-export default async function ShopLayout({
+export default function ShopLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const user = await currentUser();
   return (
-    <UserProvider user={user}>
+    <UserProvider>
+      <RouteGuard />
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />

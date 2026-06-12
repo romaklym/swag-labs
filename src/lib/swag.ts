@@ -60,6 +60,16 @@ export function getProduct(id: number): Product | undefined {
   return PRODUCTS.find((p) => p.id === id);
 }
 
+// ---- asset paths ------------------------------------------------------------
+
+// GitHub Pages serves this project under /swag-labs. Next rewrites <Link>/router
+// hrefs for the basePath automatically, but NOT plain <img src="/...">, so wrap
+// every static asset path in asset(). Keep in sync with next.config.ts basePath.
+export const BASE_PATH =
+  process.env.NODE_ENV === "production" ? "/swag-labs" : "";
+
+export const asset = (path: string): string => `${BASE_PATH}${path}`;
+
 // The image every product collapses to for the "problem_user".
 export const PROBLEM_IMAGE = "/images/sl-404.jpg";
 

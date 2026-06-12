@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { asset } from "@/lib/swag";
 
 export default function CheckoutComplete() {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function CheckoutComplete() {
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/pony-express.png"
+        src={asset("/images/pony-express.png")}
         alt="Pony Express"
         className="mx-auto mb-6 w-20"
         data-test="pony-express"

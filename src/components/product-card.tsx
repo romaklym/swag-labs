@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { type Product, PROBLEM_IMAGE, money } from "@/lib/swag";
+import { type Product, PROBLEM_IMAGE, money, asset } from "@/lib/swag";
 import { CartButton } from "@/components/cart-button";
 import { useFlags } from "@/components/user-provider";
 
@@ -33,7 +33,7 @@ export function ProductCard({
       <Link href={href} className="mx-auto block w-44" data-test="inventory-item-image">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={image}
+          src={asset(image)}
           alt={product.name}
           className="h-56 w-full object-contain"
         />
