@@ -11,7 +11,7 @@ export function ItemNotFound() {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={asset("/images/sl-404.jpg")}
+          src={asset("/images/not-found.jpg")}
           alt="Item not found"
           className="w-full rounded border border-line object-contain"
         />

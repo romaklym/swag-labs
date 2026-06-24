@@ -1,23 +1,21 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/cart-provider";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
 });
 
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
-  title: "Swag Labs",
-  description: "Swag Labs",
+  title: "Assertify Swag",
+  description: "Assertify Swag — merch for people who ship green builds.",
 };
 
 export default function RootLayout({
@@ -26,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${dmMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetBrainsMono.variable}`}>
       <body className="flex min-h-dvh flex-col antialiased">
         <CartProvider>{children}</CartProvider>
       </body>

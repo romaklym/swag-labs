@@ -5,7 +5,7 @@ export function Footer() {
       <ul className="mb-6 flex items-center justify-center gap-6">
         <li>
           <a
-            href="https://twitter.com/saucelabs"
+            href="https://twitter.com/assertify"
             data-test="social-twitter"
             aria-label="Twitter"
             className="opacity-90 hover:opacity-100"
@@ -17,7 +17,7 @@ export function Footer() {
         </li>
         <li>
           <a
-            href="https://www.facebook.com/saucelabs"
+            href="https://www.facebook.com/assertify"
             data-test="social-facebook"
             aria-label="Facebook"
             className="opacity-90 hover:opacity-100"
@@ -29,7 +29,7 @@ export function Footer() {
         </li>
         <li>
           <a
-            href="https://www.linkedin.com/company/sauce-labs/"
+            href="https://www.linkedin.com/company/assertify/"
             data-test="social-linkedin"
             aria-label="LinkedIn"
             className="opacity-90 hover:opacity-100"
@@ -43,7 +43,7 @@ export function Footer() {
         </li>
       </ul>
       <div className="footer_copy mx-auto max-w-xl text-sm">
-        © {year} Sauce Labs. All Rights Reserved. Terms of Service | Privacy
+        © {year} Assertify. All Rights Reserved. Terms of Service | Privacy
         Policy
       </div>
     </footer>

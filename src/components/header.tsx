@@ -44,7 +44,7 @@ export function Header() {
       </button>
 
       {/* Brand */}
-      <div className="font-mono text-2xl font-bold text-brand">Swag Labs</div>
+      <div className="font-mono text-2xl font-bold text-brand">Assertify</div>
 
       {/* Cart */}
       <Link
@@ -101,8 +101,8 @@ export function Header() {
                 <a
                   href={
                     problem
-                      ? "https://saucelabs.com/error/404"
-                      : "https://saucelabs.com/"
+                      ? "https://assertify.ai/error/404"
+                      : "https://assertify.ai/"
                   }
                   id="about_sidebar_link"
                   data-test="about-sidebar-link"

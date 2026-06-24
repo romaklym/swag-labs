@@ -72,11 +72,11 @@ export default function CheckoutStepTwo() {
       <div className="mt-6 space-y-4 text-sm text-brand">
         <div>
           <div className="font-bold">Payment Information:</div>
-          <div data-test="payment-info-value">SauceCard #31337</div>
+          <div data-test="payment-info-value">AssertCard #31337</div>
         </div>
         <div>
           <div className="font-bold">Shipping Information:</div>
-          <div data-test="shipping-info-value">Free Pony Express Delivery!</div>
+          <div data-test="shipping-info-value">Free Continuous Delivery!</div>
         </div>
         <div>
           <div className="font-bold">Price Total</div>

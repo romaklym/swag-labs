@@ -31,7 +31,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-dvh flex-col items-center bg-login px-4 py-16">
       <div className="login_logo mb-8 select-none font-mono text-[42px] font-bold leading-tight text-brand">
-        Swag Labs
+        Assertify
       </div>
 
       <div className="w-full max-w-[400px]">

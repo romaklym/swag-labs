@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
+/* Assertify Swag — dev-tool indigo palette. */
 @theme {
-  --color-brand: #132322;
-  --color-action: #3ddc91;
-  --color-action-dark: #18583a;
-  --color-danger: #e2231a;
-  --color-line: #ededed;
-  --color-login: #eefcf6;
+  --color-brand: #1e1b4b; /* indigo ink — nav, headings, footer */
+  --color-action: #4f46e5; /* indigo — primary CTAs, links */
+  --color-action-dark: #3730a3; /* darker indigo — hover/active */
+  --color-accent: #06b6d4; /* cyan — accents */
+  --color-danger: #ef4444; /* red — errors / fail */
+  --color-line: #e5e7eb;
+  --color-login: #eef2ff; /* indigo-50 — login backdrop */
 }
 
 @theme inline {
-  --font-sans: var(--font-dm-sans), Arial, Helvetica, sans-serif;
-  --font-mono: var(--font-dm-mono), monospace;
+  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
 }
 
 :root {
@@ -19,39 +21,39 @@
 }
 
 html {
-  font-family: var(--font-dm-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
 
 body {
   background-color: #fff;
-  color: #132322;
+  color: #1e1b4b;
 }
 
-/* Inputs match the saucedemo form_input look. */
+/* Form inputs. */
 .form-input {
   width: 100%;
   border: 1px solid #d6d6d6;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 12px 12px;
   font-size: 14px;
   line-height: 20px;
   background-color: #fff;
-  color: #132322;
+  color: #1e1b4b;
 }
 .form-input::placeholder {
   color: #979797;
 }
 .form-input:focus {
   outline: none;
-  border-color: #132322;
+  border-color: #4f46e5;
 }
 
-/* Buttons (saucedemo btn variants). */
+/* Buttons. */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
@@ -61,34 +63,34 @@ body {
   transition: filter 0.1s ease;
 }
 .btn:hover {
-  filter: brightness(0.97);
+  filter: brightness(1.05);
 }
 .btn-action {
-  background-color: #3ddc91;
-  border: 1px solid #3ddc91;
-  color: #132322;
+  background-color: #4f46e5;
+  border: 1px solid #4f46e5;
+  color: #fff;
 }
 .btn-outline {
   background-color: #fff;
-  border: 1px solid #132322;
-  color: #132322;
+  border: 1px solid #4f46e5;
+  color: #4f46e5;
 }
 .btn-danger {
   background-color: #fff;
-  border: 1px solid #e2231a;
-  color: #e2231a;
+  border: 1px solid #ef4444;
+  color: #ef4444;
 }
 
 /* Hamburger menu links. */
 .menu-link {
   display: block;
-  border-bottom: 1px solid #ededed;
-  color: #18583a;
-  font-family: var(--font-dm-mono), monospace;
+  border-bottom: 1px solid #e5e7eb;
+  color: #3730a3;
+  font-family: var(--font-jetbrains-mono), monospace;
   font-size: 16px;
   text-transform: uppercase;
   padding: 12px 0;
 }
 .menu-link:hover {
-  color: #3ddc91;
+  color: #4f46e5;
 }

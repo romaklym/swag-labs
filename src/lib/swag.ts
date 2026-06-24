@@ -1,5 +1,10 @@
-// Swag Labs — shared data + helpers. Mirrors the real saucedemo.com inventory,
-// users and copy. Safe to import from both server and client components.
+// Assertify Swag — shared data + helpers for the demo store. Safe to import
+// from both server and client components.
+//
+// NOTE: the data-test selectors, the accepted usernames + password, and the
+// special-user behaviours are the "QA contract" this site exists to exercise
+// (it is the practice target for the Assertify test suite). They are kept
+// stable on purpose — only the branding, products, copy and imagery changed.
 
 export interface Product {
   id: number;
@@ -9,50 +14,50 @@ export interface Product {
   image: string;
 }
 
-// Canonical inventory (ids match saucedemo). The store renders these sorted —
-// the default sort is "Name (A to Z)".
+// Canonical inventory. The store renders these sorted — the default sort is
+// "Name (A to Z)". Ids are stable so /inventory/[id] routes don't move.
 export const PRODUCTS: Product[] = [
   {
     id: 4,
-    name: "Sauce Labs Backpack",
-    desc: "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
-    price: 29.99,
-    image: "/images/sauce-backpack.jpg",
+    name: "Assertify Dev Hoodie",
+    desc: "Ship with confidence in the midweight Assertify Dev Hoodie. Brushed-fleece interior, ribbed cuffs, and a kangaroo pocket roomy enough for every edge case. Embroidered checkmark on the chest.",
+    price: 59.99,
+    image: "/images/hoodie.jpg",
   },
   {
     id: 0,
-    name: "Sauce Labs Bike Light",
-    desc: "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.",
-    price: 9.99,
-    image: "/images/bike-light.jpg",
+    name: "Green Check Enamel Pin",
+    desc: "Wear your green build with pride. This hard-enamel \"Green Check\" pin turns any passing suite into a flex. Rubber clutch backing, 1 inch wide.",
+    price: 8.99,
+    image: "/images/green-check-pin.jpg",
   },
   {
     id: 1,
-    name: "Sauce Labs Bolt T-Shirt",
-    desc: "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.",
-    price: 15.99,
-    image: "/images/bolt-shirt.jpg",
+    name: "Assertify Logo Tee",
+    desc: "The everyday Assertify tee. 100% ringspun combed cotton in deep indigo with a clean chest wordmark — soft enough to debug in all day.",
+    price: 24.99,
+    image: "/images/logo-tee.jpg",
   },
   {
     id: 5,
-    name: "Sauce Labs Fleece Jacket",
-    desc: "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
-    price: 49.99,
-    image: "/images/sauce-pullover.jpg",
+    name: "CI/CD Pipeline Fleece",
+    desc: "A midweight quarter-zip that handles everything from a flaky standup to a 2am incident. Stand-up collar, zippered chest pocket, and a cyan pull tab.",
+    price: 74.99,
+    image: "/images/pipeline-fleece.jpg",
   },
   {
     id: 2,
-    name: "Sauce Labs Onesie",
-    desc: "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.",
-    price: 7.99,
-    image: "/images/red-onesie.jpg",
+    name: "Junior Tester Onesie",
+    desc: "Rib-snap infant onesie for the junior tester in development. Reinforced 3-snap bottom closure and two-needle hemmed sleeves won't unravel mid-regression.",
+    price: 16.99,
+    image: "/images/tester-onesie.jpg",
   },
   {
     id: 3,
-    name: "Test.allTheThings() T-Shirt (Red)",
-    desc: "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.",
-    price: 15.99,
-    image: "/images/red-tatt.jpg",
+    name: "assert(true) T-Shirt",
+    desc: "The assertion that never fails. Super-soft ringspun combed cotton tee with a monospace assert(true) chest print — perfect for cozying up to your keyboard.",
+    price: 24.99,
+    image: "/images/assert-true-tee.jpg",
   },
 ];
 
@@ -71,7 +76,7 @@ export const BASE_PATH =
 export const asset = (path: string): string => `${BASE_PATH}${path}`;
 
 // The image every product collapses to for the "problem_user".
-export const PROBLEM_IMAGE = "/images/sl-404.jpg";
+export const PROBLEM_IMAGE = "/images/not-found.jpg";
 
 export function imageFor(product: Product, problemUser: boolean): string {
   return problemUser ? PROBLEM_IMAGE : product.image;
@@ -96,7 +101,7 @@ export const USERNAMES = [
 
 export type Username = (typeof USERNAMES)[number];
 
-/** Returns the saucedemo login error for the given credentials, or null when OK. */
+/** Returns the login error for the given credentials, or null when OK. */
 export function loginError(username: string, password: string): string | null {
   if (!username) return "Epic sadface: Username is required";
   if (!password) return "Epic sadface: Password is required";

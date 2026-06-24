@@ -17,9 +17,9 @@ export default function CheckoutComplete() {
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={asset("/images/pony-express.png")}
-        alt="Pony Express"
-        className="mx-auto mb-6 w-20"
+        src={asset("/images/order-complete.jpg")}
+        alt="Build passed"
+        className="mx-auto mb-6 w-24"
         data-test="pony-express"
       />
 
@@ -30,8 +30,8 @@ export default function CheckoutComplete() {
         Thank you for your order!
       </h2>
       <p className="mt-3 text-[#4a4a4a]" data-test="complete-text">
-        Your order has been dispatched, and will arrive just as fast as the pony
-        can get there!
+        Your order passed every check and shipped straight down the pipeline —
+        it&apos;ll deploy to your doorstep in no time!
       </p>
 
       <button
