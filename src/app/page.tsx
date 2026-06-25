@@ -106,9 +106,6 @@ export default function LoginPage() {
           <div className="login_password mt-4">
             <h4 className="mb-1 font-bold">Password for all users:</h4>
             <div>{PASSWORD}</div>
-            <div className="mt-1 opacity-80">
-              (optional — login works with or without it)
-            </div>
           </div>
         </div>
       </div>
