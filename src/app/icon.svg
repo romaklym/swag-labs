@@ -1,0 +1,14 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Assertify Swag cart">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#3730a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+  <g transform="translate(6.4 6.4) scale(0.8)" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 3h2.2l2.7 12.5a2 2 0 0 0 2 1.6h9.4a2 2 0 0 0 1.95-1.55L22.4 8H6"/>
+  </g>
+  <circle cx="13" cy="24" r="2.1" fill="#22d3ee"/>
+  <circle cx="22" cy="24" r="2.1" fill="#22d3ee"/>
+</svg>
