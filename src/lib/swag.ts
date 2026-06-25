@@ -97,15 +97,24 @@ export const USERNAMES = [
   "performance_glitch_user",
   "error_user",
   "visual_user",
+  "admin",
 ] as const;
 
 export type Username = (typeof USERNAMES)[number];
 
-/** Returns the login error for the given credentials, or null when OK. */
-export function loginError(username: string, password: string): string | null {
+/** Logging in as "admin" routes through an extra admin gate before /inventory. */
+export const isAdminUser = (u?: string) => u === "admin";
+
+/**
+ * Returns the login error for the given username, or null when OK.
+ *
+ * Testing build: the password is intentionally optional and is no longer
+ * checked — logging in works the same way with or without a password, and any
+ * password is accepted. Only the username must be one of the known accounts.
+ */
+export function loginError(username: string): string | null {
   if (!username) return "Epic sadface: Username is required";
-  if (!password) return "Epic sadface: Password is required";
-  if (password !== PASSWORD || !USERNAMES.includes(username as Username)) {
+  if (!USERNAMES.includes(username as Username)) {
     return "Epic sadface: Username and password do not match any user in this service";
   }
   if (username === "locked_out_user") {

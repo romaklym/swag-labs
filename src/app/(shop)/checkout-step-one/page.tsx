@@ -10,7 +10,6 @@ export default function CheckoutStepOne() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [error, setError] = useState<string | null>(null);
 
   function onLastName(e: React.ChangeEvent<HTMLInputElement>) {
     // problem_user: last name text lands in the first name field.
@@ -23,10 +22,8 @@ export default function CheckoutStepOne() {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!firstName) return setError("Error: First Name is required");
-    if (!lastName) return setError("Error: Last Name is required");
-    if (!postalCode) return setError("Error: Postal Code is required");
-    setError(null);
+    // Testing build: the customer info fields are optional — continue straight
+    // to the overview (works with an empty form and an empty cart).
     router.push("/checkout-step-two");
   }
 
@@ -61,27 +58,6 @@ export default function CheckoutStepOne() {
           value={postalCode}
           onChange={(e) => setPostalCode(e.target.value)}
         />
-
-        {error && (
-          <div
-            className="error-message-container relative flex items-center justify-center bg-danger px-3 py-3"
-            data-test="error"
-          >
-            <span aria-hidden className="mr-2 font-bold text-white">
-              ✕
-            </span>
-            <h3 className="text-center text-sm text-white">{error}</h3>
-            <button
-              type="button"
-              aria-label="Dismiss error"
-              data-test="error-button"
-              className="absolute right-2 top-2 text-white"
-              onClick={() => setError(null)}
-            >
-              ✕
-            </button>
-          </div>
-        )}
 
         <div className="flex items-center justify-between pt-2">
           <button

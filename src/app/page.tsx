@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { loginError, USERNAMES, PASSWORD } from "@/lib/swag";
+import { loginError, USERNAMES, PASSWORD, isAdminUser } from "@/lib/swag";
 import { useCart } from "@/components/cart-provider";
 
 export default function LoginPage() {
@@ -14,7 +14,9 @@ export default function LoginPage() {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const err = loginError(username.trim(), password);
+    const name = username.trim();
+    // Password is optional in this testing build — only the username matters.
+    const err = loginError(name);
     if (err) {
       setError(err);
       return;
@@ -23,9 +25,10 @@ export default function LoginPage() {
     // Fresh session starts with an empty cart.
     reset();
     document.cookie = `swag_user=${encodeURIComponent(
-      username.trim(),
+      name,
     )}; path=/; max-age=86400; samesite=lax`;
-    router.push("/inventory");
+    // admin has an extra gate (the admin console) before reaching the catalog.
+    router.push(isAdminUser(name) ? "/admin" : "/inventory");
   }
 
   return (
@@ -103,6 +106,9 @@ export default function LoginPage() {
           <div className="login_password mt-4">
             <h4 className="mb-1 font-bold">Password for all users:</h4>
             <div>{PASSWORD}</div>
+            <div className="mt-1 opacity-80">
+              (optional — login works with or without it)
+            </div>
           </div>
         </div>
       </div>
